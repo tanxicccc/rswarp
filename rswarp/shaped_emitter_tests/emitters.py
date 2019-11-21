@@ -253,14 +253,15 @@ class conical(protrusion):
         '''Define emission sites for macroparticle injection specific to conical emitter.'''
 
         a = self.r_cone
-        b = self.z_cone
+        b = self.r_cone
+        h = self.z_cone
 
-        r = a * np.sqrt(np.random.uniform(0, 1, N_particles))
-        h = (r / a) * b
+        h = a * np.sqrt(np.random.uniform(0, 1, N_particles))
+        r = (b / a) * h
         t = 2 * np.pi * np.random.uniform(0, 1, N_particles)
 
-        x = np.ones(N_particles) * self.x_offset + r * np.cos(t)
-        y = np.ones(N_particles) * self.y_offset + r * np.sin(t)
+        x = r * np.cos(t)
+        y = r * np.sin(t)
         z =  -h + self.z_cone
 
         return x, y, z
