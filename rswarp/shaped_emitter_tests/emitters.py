@@ -201,9 +201,9 @@ class spherical(protrusion):
         v = np.random.uniform(0, 1, N_particles)
         psi = np.arccos(2 * v - 1)
 
-        y = np.ones(N_particles) * self.y_offset + self.radius * np.cos(theta) * np.sin(psi)
+        y = self.radius * np.cos(theta) * np.sin(psi)
         z = self.radius * np.sin(theta) * np.sin(psi)
-        x = np.ones(N_particles) * self.x_offset + self.radius * np.cos(psi)
+        x = self.radius * np.cos(psi)
 
         return x, y, z
 
